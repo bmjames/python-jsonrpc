@@ -50,7 +50,7 @@ class  TestProxy(unittest.TestCase):
 
         self.respdata='{"result":"foobar","error":null,"id":""}'
         echo = s.echo("foobar")
-        self.assertEquals(self.postdata, jsonrpc.dumps({"method":"echo", 'params':['foobar'], 'id':''}))
+        self.assertEquals(self.postdata, jsonrpc.dumps({"method":"echo", 'params':['foobar'], 'id':'jsonrpc'}))
         self.assertEquals(echo, 'foobar')
 
         self.respdata='{"result":null,"error":"MethodNotFound","id":""}'

@@ -38,7 +38,7 @@ class ServiceProxy(object):
         return ServiceProxy(self.__serviceURL, name)
 
     def __call__(self, *args):
-         postdata = dumps({"method": self.__serviceName, 'params': args, 'id':''})
+         postdata = dumps({"method": self.__serviceName, 'params': args, 'id':'jsonrpc'})
          respdata = urllib.urlopen(self.__serviceURL, postdata).read()
          resp = loads(respdata)
          if resp['error'] != None:
