@@ -46,7 +46,7 @@ class ApacheRequestMockup(object):
 
 class ModPyMockup(object):
     def __init__(self):
-        self.apache=Apach()
+        self.apache=ApacheModuleMockup()
 
 class ApacheModuleMockup(object):
     def __getattr__(self, name):
