@@ -34,7 +34,7 @@ class ServiceProxy(object):
 
     def __getattr__(self, name):
         if self.__serviceName != None:
-            name = "%s.%s" % self.__serviceName
+            name = "%s.%s" % (self.__serviceName, name)
         return ServiceProxy(self.__serviceURL, name)
 
     def __call__(self, *args):
