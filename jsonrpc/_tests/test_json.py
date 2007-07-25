@@ -72,8 +72,8 @@ class  TestDumps(unittest.TestCase):
         self.assertJSON(json, u'"foobar"')
 
     def test_StringEscapedChars(self):
-        json = jsonrpc.dumps('\n \f \t \b \r \\ "')
-        self.assertJSON(json, u'"\\n \\f \\t \\b \\r \\\\ \\""')
+        json = jsonrpc.dumps('\n \f \t \b \r \\ " /')
+        self.assertJSON(json, u'"\\n \\f \\t \\b \\r \\\\ \\" \\/"')
 
     def test_StringEscapedUnicodeChars(self):
         json = jsonrpc.dumps(u'\0 \x19 \x20\u0130')
@@ -108,9 +108,9 @@ class  TestLoads(unittest.TestCase):
         self.assertEquals(obj, u"foobar")
     
     def test_StringEscapedChars(self):
-        json = jsonrpc.dumps('\n \t \r \b \f \\ "')
+        json = '"\\n \\t \\r \\b \\f \\\\ \\/ /"'
         obj = jsonrpc.loads(json)
-        self.assertEquals(obj, u'\n \t \r \b \f \\ "')
+        self.assertEquals(obj, u'\n \t \r \b \f \\ / /')
         
     def test_StringEscapedUnicodeChars(self):
         json = jsonrpc.dumps(u'\u0000 \u0019')
