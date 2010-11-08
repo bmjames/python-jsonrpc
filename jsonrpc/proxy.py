@@ -41,7 +41,7 @@ class ServiceProxy(object):
          postdata = dumps({"method": self.__serviceName, 'params': args, 'id':'jsonrpc'})
          respdata = urllib.urlopen(self.__serviceURL, postdata).read()
          resp = loads(respdata)
-         if resp['error'] != None:
+         if 'error' in resp and resp['error'] != None:
              raise JSONRPCException(resp['error'])
          else:
              return resp['result']
